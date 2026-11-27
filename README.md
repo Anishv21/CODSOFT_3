@@ -1,73 +1,87 @@
+Task 3: Job Portal
 # CareerHub – Job Portal
 
-A beginner-friendly full-stack job portal built with **Next.js, Node.js (Next.js route handlers), PostgreSQL, Prisma, Tailwind CSS and optional Cloudinary resume storage**.
+## Project Overview
+CareerHub is a modern full-stack job portal that connects job seekers and recruiters through a single platform. Candidates can explore job opportunities, apply for positions, and upload resumes, while recruiters can publish and manage job listings.
 
 ## Features
-- Candidate job listing and search
-- Job details and application form
-- Resume PDF upload endpoint (Cloudinary credentials are optional)
-- Recruiter dashboard to publish jobs
-- Applications dashboard
-- PostgreSQL persistence using Prisma
-- Demo job cards are shown if the database is not connected, so the UI can still be previewed
+- Browse available job opportunities
+- Search job listings
+- View job details
+- Apply for jobs
+- Upload PDF resumes
+- Recruiter dashboard
+- Publish new job openings
+- Manage job applications
+- PostgreSQL database integration
 
-## 1. Requirements
-- Node.js 20 or newer
-- PostgreSQL 15 or newer
-- VS Code
+## Technology Stack
+- Next.js
+- React.js
+- Node.js
+- TypeScript
+- Tailwind CSS
+- PostgreSQL
+- Prisma ORM
+- Cloudinary (optional resume storage)
 
-## 2. Open and install
-Open this folder in VS Code. In Terminal → New Terminal, run:
+## Installation & Setup
 
-```powershell
+1. Download or extract the project.
+2. Open `CareerHub_FullStack` in VS Code.
+3. Open the terminal.
+4. Install dependencies:
+
+```bash
 npm.cmd install
 ```
 
-## 3. Create PostgreSQL database
-In pgAdmin:
-1. Connect to your PostgreSQL server.
-2. Right-click **Databases** → **Create** → **Database**.
-3. Enter database name: `careerhub`.
-4. Owner: `postgres`.
-5. Click Save.
+5. Create a PostgreSQL database named `careerhub`.
 
-## 4. Configure environment
-1. Copy `.env.example` and rename the copy to `.env`.
-2. Open `.env` and replace `YOUR_PASSWORD` with your PostgreSQL password.
+6. Copy `.env.example` and rename the copy to `.env`.
 
-Example (change the password to your own):
+7. Add your PostgreSQL connection details:
 
 ```env
-DATABASE_URL="postgresql://postgres:MyPassword@localhost:5432/careerhub?schema=public"
+DATABASE_URL="postgresql://postgres:YOUR_PASSWORD@localhost:5432/careerhub?schema=public"
+
 CLOUDINARY_CLOUD_NAME=""
 CLOUDINARY_API_KEY=""
 CLOUDINARY_API_SECRET=""
 ```
 
-Do not share your `.env` file or password.
+8. Run database migration:
 
-## 5. Create database tables and sample jobs
-Run these commands one at a time:
-
-```powershell
+```bash
 npx.cmd prisma migrate dev --name init
+```
+
+9. Add sample job data:
+
+```bash
 npx.cmd prisma db seed
 ```
 
-If Prisma asks to install or generate its client, allow it. The seed command adds sample jobs once.
+10. Start the development server:
 
-## 6. Start the website
-
-```powershell
+```bash
 npm.cmd run dev
 ```
 
-Open **http://localhost:3000** in your browser.
+11. Open in browser:
 
-## Cloudinary resume upload (optional)
-The job portal and applications work without Cloudinary. To enable PDF resume uploads, create a Cloudinary account and add its cloud name, API key and API secret to `.env`. Restart the dev server after editing `.env`. PDF limit: 5 MB.
+http://localhost:3000
 
-## Important notes
-- This is a college project/demo, not a production hiring platform.
-- Authentication, role permissions, email notifications and secure recruiter accounts are not implemented.
-- If the database is not configured, the page displays demo jobs. Applying and posting jobs require the PostgreSQL database to be connected.
+## Project Purpose
+The main purpose of CareerHub is to simplify the recruitment process by connecting candidates and recruiters through an easy-to-use digital platform.
+
+## Future Improvements
+- User authentication
+- Candidate profile management
+- Advanced job filtering
+- Email notifications
+- Recruiter account management
+- Application status tracking
+
+## Author
+Developed as an internship project.
